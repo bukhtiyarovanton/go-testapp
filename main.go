@@ -16,8 +16,14 @@ import (
 
 func main() {
 
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
 	router := NewRouter()
 
 	//log.Fatal(http.ListenAndServe(":3000", handlers.CombinedLoggingHandler(os.Stdout, router)))
-	log.Fatal(http.ListenAndServe(":3000", router))
+	log.Fatal(http.ListenAndServe(":"+port, router))
 }
