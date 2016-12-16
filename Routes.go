@@ -18,22 +18,37 @@ var routes = []Route{
 		"/",
 		Index,
 	},
+	// auth routes
+	Route{
+		"Login",
+		"GET",
+		"/get-token",
+		GetToken,
+	},
+	// Todo routes
 	Route{
 		"TodoIndex",
 		"GET",
 		"/todos",
-		TodoIndex,
+		Validate(TodoIndex),
 	},
 	Route{
 		"TodoShow",
 		"GET",
 		"/todos/{todoId}",
-		TodoShow,
+		Validate(TodoShow),
 	},
 	Route{
 		"TodoCreate",
 		"POST",
 		"/todos",
-		TodoCreate,
+		Validate(TodoCreate),
 	},
+	Route{
+		"TodoDelete",
+		"DELETE",
+		"/todos/{todoId}",
+		Validate(TodoDelete),
+	},
+	// User routes
 }

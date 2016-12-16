@@ -1,41 +1,54 @@
 package main
 
 import (
-	"fmt"
+	"github.com/bukhtiyarovanton/go-testapp/models"
 )
 
-var todos []Todo // Todos storage
-
-var currentId int
-
+/*
 func init() {
-	RepoCreateTodo(Todo{Name: "Todo 1"})
-	RepoCreateTodo(Todo{Name: "Todo 2"})
-	RepoCreateTodo(Todo{Name: "Todo 3"})
+	RepoCreateTodo(models.Todo{Name: "Todo 1"})
+	RepoCreateTodo(models.Todo{Name: "Todo 2"})
+	RepoCreateTodo(models.Todo{Name: "Todo 3"})
+}
+*/
+
+func TodoRepoGetAllForUser(userID uint) []models.Todo {
+	var todos []models.Todo
+	var user models.User
+
+	db.First(&user, userID).Related(&todos)
+	return todos
 }
 
-func RepoFindTodo(id int) Todo {
-	for _, t := range todos {
-		if t.Id == id {
-			return t
-		}
-	}
-	return Todo{}
+func TodoRepoFindForUser(userID uint, id uint) models.Todo {
+	var todo models.Todo
+	var user models.User
+	//db.Where("id = ? AND user_id = ?", id, userID).First(&todo, id)
+	db.First(&user, userID).First(&todo, id)
+	return todo
 }
 
-func RepoCreateTodo(t Todo) Todo {
-	currentId += 1
-	t.Id = currentId
-	todos = append(todos, t)
+func TodoRepoCreateForUser(userID uint, t models.Todo) models.Todo {
+	t.UserID = userID
+	db.Create(&t)
 	return t
 }
 
-func RepoRemoveTodo(id int) error {
-	for i, t := range todos {
-		if t.Id == id {
-			todos = append(todos[:i], todos[i+1:]...)
-			return nil
-		}
+func TodoRepoDeleteForUser(userID uint, id uint) models.Todo {
+
+	todoToDelete := models.Todo{
+		UserID: userID,
+		Model: models.Model{
+			ID: id,
+		},
 	}
-	return fmt.Errorf("Could not find Todo with id of %d to delete", id)
+
+	db.Find(&todoToDelete).Delete(&todoToDelete)
+	return todoToDelete
+}
+
+func UserRepoFindByName(name string) (models.User, error) {
+	var user models.User
+	db.Where("name = ?", name).Find(&user)
+	return user, nil
 }
