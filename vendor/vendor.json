@@ -3,6 +3,18 @@
 	"ignore": "test",
 	"package": [
 		{
+			"checksumSHA1": "Os0cfgjnV03TrpUSJWcMQOOUMEM=",
+			"path": "github.com/bukhtiyarovanton/go-testapp",
+			"revision": "b894fd08400833117819a699c261ae52f1decad2",
+			"revisionTime": "2016-12-16T07:28:46Z"
+		},
+		{
+			"checksumSHA1": "/g0IM4ATadXbm2pYg3lfJbte4dI=",
+			"path": "github.com/bukhtiyarovanton/go-testapp/models",
+			"revision": "b894fd08400833117819a699c261ae52f1decad2",
+			"revisionTime": "2016-12-16T07:28:46Z"
+		},
+		{
 			"checksumSHA1": "2Fy1Y6Z3lRRX1891WF/+HT4XS2I=",
 			"path": "github.com/dgrijalva/jwt-go",
 			"revision": "9ed569b5d1ac936e6494082958d63a6aa4fff99a",
@@ -67,9 +79,6 @@
 			"path": "golang.org/x/crypto/blowfish",
 			"revision": "01be46f62051d02cb6a36c9b47b37b24e5758c81",
 			"revisionTime": "2016-12-15T13:43:59Z"
-		},
-		{
-			"path": "github.com/bukhtiyarovanton/go-testapp/models",
 		}
 	],
 	"rootPath": "github.com/bukhtiyarovanton/go-testapp"
