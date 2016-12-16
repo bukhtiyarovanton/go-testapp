@@ -18,6 +18,7 @@ func TodoRepoGetAllForUser(userID uint) []models.Todo {
 
 	db.First(&user, userID).Related(&todos)
 	return todos
+
 }
 
 func TodoRepoFindForUser(userID uint, id uint) models.Todo {

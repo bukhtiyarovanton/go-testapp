@@ -24,8 +24,13 @@ func main() {
 		//log.Fatal("$PORT must be set")
 	}
 
+	dbhost := os.Getenv("DATABASE_URL")
+	if dbhost == "" {
+		dbhost = "host=localhost dbname=go-testappDB user=AntonBukhtiyarov password=taNk1985 sslmode=disable"
+	}
+
 	var err error
-	db, err = gorm.Open("postgres", "host=localhost dbname=go-testappDB user=AntonBukhtiyarov password=taNk1985 sslmode=disable")
+	db, err = gorm.Open("postgres", dbhost)
 	if err != nil {
 		log.Fatal(err)
 	}
