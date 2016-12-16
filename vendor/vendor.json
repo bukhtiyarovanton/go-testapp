@@ -67,6 +67,9 @@
 			"path": "golang.org/x/crypto/blowfish",
 			"revision": "01be46f62051d02cb6a36c9b47b37b24e5758c81",
 			"revisionTime": "2016-12-15T13:43:59Z"
+		},
+		{
+			"path": "github.com/bukhtiyarovanton/go-testapp/models",
 		}
 	],
 	"rootPath": "github.com/bukhtiyarovanton/go-testapp"
