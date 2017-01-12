@@ -26,7 +26,7 @@ func main() {
 
 	dbhost := os.Getenv("DATABASE_URL")
 	if dbhost == "" {
-		dbhost = "host=localhost dbname=go-testappDB user=AntonBukhtiyarov password=taNk1985 sslmode=disable"
+		dbhost = "host=localhost dbname=go-testappDB user=AntonBukhtiyarov password=blablabla sslmode=disable"
 	}
 
 	var err error
